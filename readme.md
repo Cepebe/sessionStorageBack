@@ -2,7 +2,7 @@
 
 ## Esquema de la Base de Datos
 
-![Courses DB Schema] (./images/bbdd.png)
+![Courses DB Schema] (https://github.com/Cepebe/sessionStorageBack/blob/main/images/bbdd.png?raw=true)
 
 ## API endpoints 
 
