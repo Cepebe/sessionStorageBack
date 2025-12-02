@@ -1,26 +1,52 @@
-## Esquema de la base de datos: 
-┌──────────────┐          ┌────────────────┐          ┌─────────────┐
-│    USERS     │          │   USER_COURSES │          │   COURSES   │
-└──────────────┘          └────────────────┘          └─────────────┘
-│ userId (PK)  │     ┌──▶ │ joinId (PK)    │ ◀──┐     │ courseId(PK)│
-│ username     │     │    │ userId (FK)    │    │     │ courseName  │
-│ password     │     │    │ courseId (FK)  │    │     │ description │
-│ email        │     │    └────────────────┘    │     │ courseType  │
-│ budget       │     │                          │     │ etsCredits  │
-│ createdAt    │     │                          │     │ semester    │
-│ updatedAt    │     └──────────────────────────┘     │ vacancies   │
-└──────────────┘                                      └─────────────┘
+USERS
+┌────────────┬──────────────┐
+│ Campo      │ Tipo / Clave │
+├────────────┼──────────────┤
+│ userId     │ PK           │
+│ username   │              │
+│ password   │              │
+│ email      │              │
+│ budget     │              │
+│ createdAt  │              │
+│ updatedAt  │              │
+└────────────┴──────────────┘
+
+
+COURSES
+┌─────────────┬──────────────┐
+│ Campo       │ Tipo / Clave │
+├─────────────┼──────────────┤
+│ courseId    │ PK           │
+│ courseName  │              │
+│ description │              │
+│ courseType  │              │
+│ etsCredits  │              │
+│ semester    │              │
+│ vacancies   │              │
+└─────────────┴──────────────┘
+
+
+USER_COURSES
+┌───────────┬──────────────┐
+│ Campo     │ Tipo / Clave │
+├───────────┼──────────────┤
+│ joinId    │ PK           │
+│ userId    │ FK → USERS   │
+│ courseId  │ FK → COURSES │
+└───────────┴──────────────┘
+
 
 ## API endpoints 
 
 ### GET
+
 `users` router.get('/all', userController.getAllUser) <br/>
 Devuelve todos los usuarios <br/>
 `users` router.get('/get/:id', userController.getUserById) <br/>
 Devuelve un objeto de tipo UserDto <br/>
 `users` router.get('/get/email/:email', userController.getUserByEmail) <br/>
 Devuelve un objeto de tipo UserDto <br/>
--------------------------------------------------------------------------------
+
 `courses` router.get('/all', courseController.getAllCourses) <br/>
 Devuelve un array de objetos de tipo CourseDto <br/>
 `courses` router.get('/get/:id', courseController.getCourseById) <br/>
