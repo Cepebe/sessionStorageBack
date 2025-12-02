@@ -1,40 +1,8 @@
-USERS
-┌────────────┬──────────────┐
-│ Campo      │ Tipo / Clave │
-├────────────┼──────────────┤
-│ userId     │ PK           │
-│ username   │              │
-│ password   │              │
-│ email      │              │
-│ budget     │              │
-│ createdAt  │              │
-│ updatedAt  │              │
-└────────────┴──────────────┘
+# Backend ejercicio sessionStorage
 
+## Esquema de la Base de Datos
 
-COURSES
-┌─────────────┬──────────────┐
-│ Campo       │ Tipo / Clave │
-├─────────────┼──────────────┤
-│ courseId    │ PK           │
-│ courseName  │              │
-│ description │              │
-│ courseType  │              │
-│ etsCredits  │              │
-│ semester    │              │
-│ vacancies   │              │
-└─────────────┴──────────────┘
-
-
-USER_COURSES
-┌───────────┬──────────────┐
-│ Campo     │ Tipo / Clave │
-├───────────┼──────────────┤
-│ joinId    │ PK           │
-│ userId    │ FK → USERS   │
-│ courseId  │ FK → COURSES │
-└───────────┴──────────────┘
-
+![Courses DB Schema] (./images/bbdd.png)
 
 ## API endpoints 
 
@@ -63,8 +31,11 @@ Devuelve un array de objetos de tipo CourseDto <br/>
 Devuelve el número de vacantes disponibles <br/>
 
 ### POST
+
+
 `users` router.post('/add', userController.addUser) <br/>
 Devuelve el usuario creado o un código de error <br/>
+
 `courses` router.post('/add', courseController.addCourse) <br/>
 Devuelve el curso creado <br/>
 `courses` router.post('/withdraw', courseController.withdrawCourse) <br/>
